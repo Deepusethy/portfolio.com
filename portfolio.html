@@ -108,7 +108,7 @@
             box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
         }
 
-        /* Hero Section */
+        /* Hero Section with Video Background */
         .hero {
             height: 100vh;
             display: flex;
@@ -120,6 +120,21 @@
             overflow: hidden;
         }
 
+        /* Video Background Styles */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -3;
+            object-fit: cover;
+        }
+
+        /* Video Overlay for better text readability */
         .hero::before {
             content: '';
             position: absolute;
@@ -127,8 +142,20 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
-            z-index: -1;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.7), rgba(118, 75, 162, 0.7));
+            z-index: -2;
+        }
+
+        /* Fallback background for when video doesn't load */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: -4;
         }
 
         .hero-content {
@@ -143,14 +170,16 @@
             font-weight: 700;
             animation: slideInFromLeft 1s ease-out;
             line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .hero .subtitle {
             font-size: 1.4rem;
             margin-bottom: 2.5rem;
             animation: slideInFromRight 1s ease-out 0.3s both;
-            opacity: 0.9;
+            opacity: 0.95;
             font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .cta-btn {
@@ -633,7 +662,7 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#hero" class="logo">Deepu Sethy</a>
+                        <a href="#hero" class="logo">Deep</a>
             <ul class="nav-menu">
                 <li><a href="#hero" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
@@ -649,12 +678,22 @@
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
+        <!-- Video Background -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="./space video.mp4" type="video/mp4">
+            <source src="YOUR_VIDEO_URL_HERE.webm" type="video/webm">
+            <!-- Fallback text for browsers that don't support video -->
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Floating particles -->
         <div class="particle"></div>
         <div class="particle"></div>
         <div class="particle"></div>
         <div class="particle"></div>
+        
         <div class="hero-content">
-            <h1>Welcome to My Portfolio</h1>
+            <h1>Welcome to Deep's Portfolio</h1>
             <p class="subtitle">I'm a passionate developer creating amazing digital experiences with modern technologies and innovative solutions.</p>
             <a href="#about" class="cta-btn">Explore My Work</a>
         </div>
@@ -784,6 +823,19 @@ document.addEventListener('DOMContentLoaded', function() {
         if (logo) {
             logo.textContent = `${currentUser.name}'s Portfolio`;
         }
+    }
+
+    // Video error handling
+    const video = document.querySelector('.hero-video');
+    if (video) {
+        video.addEventListener('error', function(e) {
+            console.log('Video failed to load, using fallback background');
+            video.style.display = 'none';
+        });
+        
+        video.addEventListener('loadeddata', function() {
+            console.log('Video loaded successfully');
+        });
     }
 });
 
