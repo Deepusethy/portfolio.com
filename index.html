@@ -20,16 +20,39 @@
         body {
             font-family: 'Montserrat', sans-serif;
             background: #f6f5f7;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(102, 126, 234, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(118, 75, 162, 0.4) 0%, transparent 50%),
+                linear-gradient(135deg, transparent 25%, rgba(102, 126, 234, 0.1) 50%, transparent 75%),
+                linear-gradient(45deg, transparent 25%, rgba(118, 75, 162, 0.1) 50%, transparent 75%),
+                repeating-linear-gradient(90deg, transparent, transparent 98px, rgba(102, 126, 234, 0.03) 100px),
+                repeating-linear-gradient(0deg, transparent, transparent 98px, rgba(118, 75, 162, 0.03) 100px);
+            background-size: 400px 400px, 400px 400px, 200px 200px, 200px 200px, 100px 100px, 100px 100px;
+            background-position: 0% 0%, 100% 100%, 0% 100%, 100% 0%, 0% 0%, 0% 0%;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
             transition: all 0.3s ease;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { background-position: 0% 0%, 100% 100%, 0% 100%, 100% 0%, 0% 0%, 0% 0%; }
+            50% { background-position: 100% 100%, 0% 0%, 100% 0%, 0% 100%, 50% 50%, 25% 75%; }
         }
 
         body.dark-theme {
             background: #1a1a2e;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(102, 126, 234, 0.6) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(118, 75, 162, 0.6) 0%, transparent 50%),
+                linear-gradient(135deg, transparent 25%, rgba(102, 126, 234, 0.2) 50%, transparent 75%),
+                linear-gradient(45deg, transparent 25%, rgba(118, 75, 162, 0.2) 50%, transparent 75%),
+                repeating-linear-gradient(90deg, transparent, transparent 98px, rgba(102, 126, 234, 0.05) 100px),
+                repeating-linear-gradient(0deg, transparent, transparent 98px, rgba(118, 75, 162, 0.05) 100px);
+            background-size: 400px 400px, 400px 400px, 200px 200px, 200px 200px, 100px 100px, 100px 100px;
         }
 
         .container {
@@ -241,7 +264,6 @@
             color: #ffffff;
         }
 
-        /* Theme Toggle Button */
         .theme-toggle {
             position: fixed;
             top: 20px;
@@ -276,7 +298,6 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
         }
 
-        /* Color Theme Toggle Button */
         .color-toggle {
             position: fixed;
             top: 90px;
@@ -302,13 +323,28 @@
             box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
         }
 
-        /* Green Theme Styles */
         body.green-theme {
             background: #f0f9f0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(34, 197, 94, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(22, 163, 74, 0.4) 0%, transparent 50%),
+                linear-gradient(135deg, transparent 25%, rgba(34, 197, 94, 0.1) 50%, transparent 75%),
+                linear-gradient(45deg, transparent 25%, rgba(22, 163, 74, 0.1) 50%, transparent 75%),
+                repeating-linear-gradient(90deg, transparent, transparent 98px, rgba(34, 197, 94, 0.03) 100px),
+                repeating-linear-gradient(0deg, transparent, transparent 98px, rgba(22, 163, 74, 0.03) 100px);
+            background-size: 400px 400px, 400px 400px, 200px 200px, 200px 200px, 100px 100px, 100px 100px;
         }
 
         body.green-theme.dark-theme {
             background: #0d1b0d;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(34, 197, 94, 0.6) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(22, 163, 74, 0.6) 0%, transparent 50%),
+                linear-gradient(135deg, transparent 25%, rgba(34, 197, 94, 0.2) 50%, transparent 75%),
+                linear-gradient(45deg, transparent 25%, rgba(22, 163, 74, 0.2) 50%, transparent 75%),
+                repeating-linear-gradient(90deg, transparent, transparent 98px, rgba(34, 197, 94, 0.05) 100px),
+                repeating-linear-gradient(0deg, transparent, transparent 98px, rgba(22, 163, 74, 0.05) 100px);
+            background-size: 400px 400px, 400px 400px, 200px 200px, 200px 200px, 100px 100px, 100px 100px;
         }
 
         body.green-theme .container {
@@ -331,7 +367,7 @@
         }
 
         body.green-theme .overlay {
-            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            background: linear-gradient(135deg, #22c55e, #16a34a);
         }
 
         body.green-theme button {
@@ -497,7 +533,7 @@
         }
 
         .overlay {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: #ffffff;
             position: relative;
             left: -100%;
@@ -595,11 +631,39 @@
             background: linear-gradient(45deg, #dc3545, #e74c3c);
         }
 
+        .nav-link {
+            font-size: 14px;
+            color: #667eea;
+            text-decoration: none;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+            color: #764ba2;
+        }
+
+        body.dark-theme .nav-link {
+            color: #90cdf4;
+        }
+
+        body.dark-theme .nav-link:hover {
+            color: #63b3ed;
+        }
+
+        /* Mobile Responsive Styles - Fixed */
         @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
             .container {
                 width: 100%;
                 min-height: 100vh;
                 border-radius: 0;
+                max-width: none;
+                position: relative;
             }
 
             .form-grid {
@@ -610,15 +674,27 @@
                 display: none;
             }
 
-            .sign-in-container,
-            .sign-up-container {
+            .form-container {
+                position: static !important;
+                width: 100% !important;
+                transform: none !important;
+                opacity: 1 !important;
+                z-index: 1 !important;
+                left: 0 !important;
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .sign-in-container {
+                display: block;
                 width: 100%;
-                position: relative;
+                position: static;
             }
 
             .sign-up-container {
-                opacity: 1;
                 display: none;
+                width: 100%;
+                position: static;
             }
 
             .container.right-panel-active .sign-in-container {
@@ -626,8 +702,157 @@
             }
 
             .container.right-panel-active .sign-up-container {
-                display: flex;
-                transform: none;
+                display: block;
+            }
+
+            form {
+                padding: 20px;
+                height: auto;
+                min-height: 100vh;
+                justify-content: flex-start;
+                padding-top: 60px;
+                width: 100%;
+                margin: 0;
+                transform: none !important;
+                position: static !important;
+            }
+
+            .sign-up-container form {
+                padding: 20px;
+                padding-top: 40px;
+                justify-content: flex-start;
+            }
+
+            .sign-in-container form {
+                justify-content: center;
+                padding-top: 80px;
+            }
+
+            h1 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            button {
+                padding: 12px 40px;
+                font-size: 12px;
+                margin: 20px 0;
+            }
+
+            .social-container a {
+                height: 40px;
+                width: 40px;
+                font-size: 16px;
+            }
+
+            .theme-toggle {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .color-toggle {
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
+                top: 80px;
+            }
+
+            input, select {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+
+            .nav-link {
+                display: block;
+                margin: 20px 0;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 5px;
+            }
+
+            form {
+                padding: 15px;
+                padding-top: 50px;
+            }
+
+            .sign-up-container form {
+                padding: 15px;
+                padding-top: 30px;
+            }
+
+            .sign-in-container form {
+                padding-top: 70px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            button {
+                padding: 10px 30px;
+                font-size: 11px;
+            }
+
+            .social-container {
+                margin: 10px 0;
+            }
+
+            .social-container a {
+                height: 35px;
+                width: 35px;
+                font-size: 14px;
+                margin: 0 5px;
+            }
+
+            input, select {
+                padding: 10px 12px;
+                font-size: 12px;
+            }
+
+            .checkbox-group label {
+                font-size: 12px;
+            }
+
+            .password-toggle {
+                font-size: 14px;
+            }
+
+            .theme-toggle {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+                top: 15px;
+                right: 15px;
+            }
+
+            .color-toggle {
+                width: 45px;
+                height: 45px;
+                font-size: 16px;
+                top: 70px;
+                right: 15px;
+            }
+
+            .form-grid {
+                gap: 8px;
+            }
+
+            .form-group {
+                margin-bottom: 5px;
+            }
+
+            .checkbox-group {
+                margin: 15px 0;
+            }
+
+            span {
+                font-size: 12px;
+                margin: 10px 0;
             }
         }
     </style>
@@ -730,6 +955,7 @@
                 </div>
                 
                 <button type="submit">Create Account</button>
+                <a class="nav-link" id="mobileSignIn">Already have an account? Sign In</a>
             </form>
         </div>
 
@@ -760,6 +986,7 @@
                 </div>
                 <a href="#" id="forgotPassword">Forgot your password?</a>
                 <button type="submit">Sign In</button>
+                <a class="nav-link" id="mobileSignUp">Don't have an account? Sign Up</a>
             </form>
         </div>
 
@@ -784,13 +1011,27 @@
         // Panel switching functionality
         const signUpButton = document.getElementById('signUp');
         const signInButton = document.getElementById('signIn');
+        const mobileSignUpButton = document.getElementById('mobileSignUp');
+        const mobileSignInButton = document.getElementById('mobileSignIn');
         const container = document.getElementById('container');
 
-        signUpButton.addEventListener('click', () => {
+        // Desktop panel switching
+        signUpButton?.addEventListener('click', () => {
             container.classList.add("right-panel-active");
         });
 
-        signInButton.addEventListener('click', () => {
+        signInButton?.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });
+
+        // Mobile panel switching - Fixed
+        mobileSignUpButton?.addEventListener('click', (e) => {
+            e.preventDefault();
+            container.classList.add("right-panel-active");
+        });
+
+        mobileSignInButton?.addEventListener('click', (e) => {
+            e.preventDefault();
             container.classList.remove("right-panel-active");
         });
 
@@ -853,7 +1094,6 @@
         }
 
         function validateUser(email, password) {
-            // Check admin credentials
             if (email === validEmail && password === validPassword) {
                 return { 
                     success: true, 
@@ -865,12 +1105,10 @@
                 };
             }
 
-            // Check registered users
             const users = getUsers();
             const user = users.find(u => u.email === email && u.password === password);
             
             if (user) {
-                // Update last login
                 user.lastLogin = new Date().toISOString();
                 saveUsers(users);
                 return { success: true, user };
@@ -885,7 +1123,6 @@
         signupForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Get form data
             const formData = {
                 firstName: document.getElementById('firstName').value.trim(),
                 lastName: document.getElementById('lastName').value.trim(),
@@ -904,7 +1141,6 @@
             const button = signupForm.querySelector('button[type="submit"]');
             const originalText = button.textContent;
 
-            // Validation
             if (!formData.firstName || !formData.lastName || !formData.email || 
                 !formData.phone || !formData.dateOfBirth || !formData.gender || 
                 !formData.country || !formData.city || !formData.password || 
@@ -931,7 +1167,6 @@
                 return;
             }
 
-            // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(formData.email)) {
                 alert('Please enter a valid email address');
@@ -939,7 +1174,6 @@
                 return;
             }
 
-            // Phone validation
             const phoneRegex = /^[+]?[\d\s\-\(\)]{10,}$/;
             if (!phoneRegex.test(formData.phone)) {
                 alert('Please enter a valid phone number');
@@ -947,10 +1181,9 @@
                 return;
             }
 
-            // Age validation (must be 13+)
             const birthDate = new Date(formData.dateOfBirth);
             const today = new Date();
-            const age = today.getFullYear() - birthDate.getFullYear();
+            let age = today.getFullYear() - birthDate.getFullYear();
             const monthDiff = today.getMonth() - birthDate.getMonth();
             
             if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
@@ -962,12 +1195,10 @@
                 return;
             }
 
-            // Show loading state
             button.textContent = 'Creating Account...';
             button.disabled = true;
             button.style.background = 'linear-gradient(45deg, #6c757d, #495057)';
 
-            // Simulate API call delay
             setTimeout(() => {
                 if (emailExists(formData.email)) {
                     button.textContent = 'Email Already Exists';
@@ -980,7 +1211,6 @@
                         button.classList.remove('error-message');
                     }, 2000);
                 } else {
-                    // Create user account
                     const userData = {
                         firstName: formData.firstName,
                         lastName: formData.lastName,
@@ -1001,7 +1231,6 @@
                     button.textContent = 'Account Created!';
                     button.classList.add('success-message');
 
-                    // Clear form
                     signupForm.reset();
 
                     setTimeout(() => {
@@ -1043,11 +1272,9 @@
                     button.textContent = 'Welcome!';
                     button.classList.add('success-message');
 
-                    // Store current user
                     localStorage.setItem('currentUser', JSON.stringify(result.user));
 
                     setTimeout(() => {
-                        // Redirect to dashboard/portfolio page
                         window.location.href = 'portfolio.html';
                     }, 1000);
                 } else {
@@ -1093,7 +1320,6 @@
             if (password.length > 0) {
                 const validation = validatePassword(password);
                 
-                // You could add a visual indicator here
                 if (!validation.valid) {
                     this.style.borderColor = '#dc3545';
                     this.title = validation.message;
@@ -1193,14 +1419,12 @@
             const themeIcon = document.getElementById('theme-icon');
             const colorIcon = document.getElementById('color-icon');
             
-            // Load dark/light theme
             if (savedTheme === 'dark') {
                 body.classList.add('dark-theme');
                 themeIcon.classList.remove('fa-moon');
                 themeIcon.classList.add('fa-sun');
             }
             
-            // Load color theme
             if (savedColorTheme === 'green') {
                 body.classList.add('green-theme');
                 colorIcon.classList.remove('fa-palette');
